@@ -26,6 +26,11 @@ This project is not a tutorial as it would create a similar situation for you th
 
 Warning: Ensure to hide Public IP, SSID, and Password
 
+## Proof of Concept
+
+![image](https://github.com/user-attachments/assets/ec1851f6-9992-4c9e-9505-961348ca428b)
+![IMG_3983](https://github.com/user-attachments/assets/3ebe019a-e2da-4b84-8e43-db375c6fdb98)
+
 ## References
 https://github.com/espressif/esp-idf
 https://www.youtube.com/watch?v=dOVjb2wXI84&t=290s
