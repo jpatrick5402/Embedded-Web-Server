@@ -32,8 +32,8 @@ Warning: Ensure to hide Public IP, SSID, and Password
 ![IMG_3983](https://github.com/user-attachments/assets/3ebe019a-e2da-4b84-8e43-db375c6fdb98)
 
 ## References
-https://github.com/espressif/esp-idf
-https://www.youtube.com/watch?v=dOVjb2wXI84&t=290s
-https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide.html#getting-started
-https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/linux-macos-setup.html
-https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
+- https://github.com/espressif/esp-idf
+- https://www.youtube.com/watch?v=dOVjb2wXI84&t=290s
+- https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide.html#getting-started
+- https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/linux-macos-setup.html
+- https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
