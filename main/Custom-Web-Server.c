@@ -13,6 +13,7 @@
 #include "esp_netif.h"
 #include "esp_tls.h"
 #include "esp_check.h"
+#include <sys/socket.h>
 
 static const char *TAG = "custom_web_server";
 
@@ -23,6 +24,21 @@ static esp_err_t index_get_handler(httpd_req_t *req)
     const size_t index_size = (index_end - index_start);
 
     httpd_resp_send(req, (const char *)index_start, index_size); // sending data over
+
+    // getting client IP address
+    int sockfd = httpd_req_to_sockfd(req);
+    char ipstr[INET6_ADDRSTRLEN];
+    struct sockaddr_in6 addr;
+    socklen_t addr_size = sizeof(addr);
+
+    if (getpeername(sockfd, (struct sockaddr *)&addr, &addr_size) < 0) {
+        ESP_LOGE(TAG, "Error getting client IP");
+        return ESP_OK;
+    }
+
+    // Convert to IPv4 string
+    inet_ntop(AF_INET, &addr.sin6_addr.un.u32_addr[3], ipstr, sizeof(ipstr));
+    ESP_LOGI(TAG, "Client IP => %s", ipstr);
 
     return ESP_OK;
 }
