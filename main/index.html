@@ -6,7 +6,7 @@
         <title></title>
     </head>
     <body>
-    <h1>ESP32 Web Server</h1>
+    <h1 class="hover-element">ESP32 Web Server</h1>
         <p>Created by Joseph</p>
     </body>
     <style>
@@ -15,5 +15,14 @@
     }
     </style>
     <script>
+    const element = document.querySelector('.hover-element');
+
+    element.addEventListener('mouseover', () => {
+        element.style.transform = 'translateY(-10px)'; // Move the element up by 10px
+    });
+
+    element.addEventListener('mouseout', () => {
+        element.style.transform = 'translateY(0)'; // Reset the position
+    });
     </script>
 </html>
