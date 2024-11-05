@@ -1,19 +1,25 @@
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <esp_log.h>
-#include <nvs_flash.h>
-#include <sys/param.h>
+#include "string.h"
+#include "stdlib.h"
+#include "unistd.h"
+#include "esp_log.h"
+#include "nvs_flash.h"
+#include "sys/param.h"
 #include "esp_netif.h"
 #include "protocol_examples_common.h"
 #include "protocol_examples_utils.h"
 #include "esp_tls_crypto.h"
-#include <esp_http_server.h>
+#include "esp_http_server.h"
 #include "esp_event.h"
 #include "esp_netif.h"
 #include "esp_tls.h"
 #include "esp_check.h"
-#include <sys/socket.h>
+#include "sys/socket.h"
+
+#include "inttypes.h"
+#include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/queue.h"
 
 static const char *TAG = "custom_web_server";
 
@@ -39,6 +45,10 @@ static esp_err_t index_get_handler(httpd_req_t *req)
     // Convert to IPv4 string
     inet_ntop(AF_INET, &addr.sin6_addr.un.u32_addr[3], ipstr, sizeof(ipstr));
     ESP_LOGI(TAG, "Client IP => %s", ipstr);
+
+    gpio_set_level(18, 1);
+    sleep(1);
+    gpio_set_level(18, 0);
 
     return ESP_OK;
 }
@@ -103,7 +113,16 @@ void app_main(void) { // entry point for our application
 
     ESP_LOGI(TAG, "Waiting for connections");
 
-    while (server) { // loop allows for connections to be captured
+    // GPIO configuration
+    gpio_config_t io_conf = {};
+    io_conf.intr_type = GPIO_INTR_DISABLE;
+    io_conf.mode = 18;
+    io_conf.pin_bit_mask = (1ULL << 18);
+    io_conf.pull_down_en = 0;
+    io_conf.pull_up_en = 0;
+    gpio_config(&io_conf);
+    
+    while (server) {
         sleep(5);
     }
 }
