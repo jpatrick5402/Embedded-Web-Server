@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title></title>
     </head>
     <body>
-    <h1 class="hover-element">ESP32 Web Server</h1>
+        <h1 class="hover-element">ESP32 Web Server</h1>
         <p>Created by Joseph</p>
     </body>
     <style>
-    h1 {
-        color: blue;
-    }
+        h1 {
+            color: blue;
+        }
+        body {
+            background-color: rgb(156, 156, 156);
+        }
     </style>
     <script>
-    const element = document.querySelector('.hover-element');
+        const element = document.querySelector(".hover-element");
 
-    element.addEventListener('mouseover', () => {
-        element.style.transform = 'translateY(-10px)'; // Move the element up by 10px
-    });
+        element.addEventListener("mouseover", () => {
+            element.style.transform = "translateY(-1px)"; // Move the element up by 10px
+        });
 
-    element.addEventListener('mouseout', () => {
-        element.style.transform = 'translateY(0)'; // Reset the position
-    });
+        element.addEventListener("mouseout", () => {
+            element.style.transform = "translateY(0)"; // Reset the position
+        });
     </script>
 </html>
